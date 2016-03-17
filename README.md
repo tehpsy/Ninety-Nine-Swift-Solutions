@@ -1,5 +1,5 @@
 # Ninety-Nine-Swift-Solutions
-Community solutions to the Ninety-Nine Swift Problems (http://enekoallonso.com/projects/99-swift-problems)
+Community solutions to the Ninety-Nine Swift Problems (http://enekoalonso.com/projects/99-swift-problems)
 
 ## Submitting a Solution
 To submit your solution please fork this repository and add the files (one per problem) containing your solution. Make sure you name your files in the format `pXX_username.swift`, where `XX` is the problem number and `username` is your GitHub username in lower-case.
