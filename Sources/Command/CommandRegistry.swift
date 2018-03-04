@@ -26,11 +26,9 @@ public struct CommandRegistry {
         do {
             let parsedArguments = try parse()
             try process(arguments: parsedArguments)
-        }
-        catch let error as ArgumentParserError {
+        } catch let error as ArgumentParserError {
             Logger.error(error.description.red)
-        }
-        catch let error {
+        } catch let error {
             Logger.error(error.localizedDescription.red)
         }
     }
@@ -50,4 +48,3 @@ public struct CommandRegistry {
     }
 
 }
-

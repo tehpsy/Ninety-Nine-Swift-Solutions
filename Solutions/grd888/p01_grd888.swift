@@ -4,7 +4,7 @@ extension List {
     /// - returns: T last element of the linked list
     /// - author: Greg Delgado (grd888@gmail.com)
     /// - complexity: O(n)
-    
+
     public var last: T {
         guard let element = self.nextItem else {
             return self.value

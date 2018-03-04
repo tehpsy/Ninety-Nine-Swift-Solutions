@@ -58,13 +58,13 @@ struct TestRunner {
         let destination = "Solutions/\(username)/includes/main.swift"
         let tests = solutions.map { "tester.test\($0.uppercased())()" }.joined(separator: "\n")
         let main = """
-            import Foundation
-            import SolutionTester
-            let tester = SolutionTester()
-            \(tests)
-            tester.showResults()
-            exit(tester.exitCode)
-            """
+        import Foundation
+        import SolutionTester
+        let tester = SolutionTester()
+        \(tests)
+        tester.showResults()
+        exit(tester.exitCode)
+        """
         let output = URL(fileURLWithPath: destination)
         try main.write(to: output, atomically: true, encoding: .utf8)
     }

@@ -25,11 +25,9 @@ struct UsernameCommand: Command {
         if let username = arguments.get(username) {
             try Username.set(username: username)
             Logger.log("Username has been set to '\(username)'")
-        }
-        else if let username = Username() {
+        } else if let username = Username() {
             Logger.log("Username: \(username.value)")
-        }
-        else {
+        } else {
             Username.printError()
         }
     }

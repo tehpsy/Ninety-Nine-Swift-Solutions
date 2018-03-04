@@ -21,7 +21,6 @@ public class Tree<T>: CustomStringConvertible {
     }
 }
 
-
 public class PositionedTree<T> : Tree<T> {
     var x: Int
     var y: Int

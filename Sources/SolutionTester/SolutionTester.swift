@@ -3,12 +3,6 @@ import NinetyNineSwiftProblems
 import Command
 import Basic
 
-extension TimeInterval {
-    var secs: String {
-        return String(format: "%0.3f seconds", self)
-    }
-}
-
 var passes = 0
 var failures = 0
 var totalDuration: TimeInterval = 0
@@ -17,17 +11,17 @@ public struct SolutionTester {
 
     public init() {}
 
-    public func test<T: Equatable>(_ expression: @autoclosure () -> T, equals isEqualTo: @autoclosure () -> T, _ desc: String, function: StaticString = #function) {
+    public func test<T: Equatable>(_ expression: @autoclosure () -> T?, equals isEqualTo: @autoclosure () -> T?, _ desc: String, function: StaticString = #function) {
         let (value, duration) = meassure {
             expression()
         }
         let expectation = isEqualTo()
         if value == expectation {
             passes += 1
-            Logger.log("[" + "PASS".green + "] \(function) '\(desc)' passed: \(value) == \(expectation) (\(duration.secs)) " + "✔".green)
+            Logger.log("[" + "PASS".green + "] \(function) '\(desc)' passed: \(value.unwrapped) == \(expectation.unwrapped) (\(duration.secs)) " + "✔".green)
         } else {
             failures += 1
-            Logger.log("[" + "FAIL".red + "] \(function) '\(desc)' failed: " + "\(value) != \(expectation)".red + " (\(duration.secs)) " + "ⅹ".red)
+            Logger.log("[" + "FAIL".red + "] \(function) '\(desc)' failed: " + "\(value.unwrapped) != \(expectation.unwrapped)".red + " (\(duration.secs)) " + "ⅹ".red)
         }
         totalDuration += duration
     }
@@ -55,3 +49,19 @@ public struct SolutionTester {
 
 }
 
+extension TimeInterval {
+    var secs: String {
+        return String(format: "%0.3f seconds", self)
+    }
+}
+
+extension Optional {
+    var unwrapped: String {
+        switch self {
+        case .none:
+            return "nil"
+        case let .some(wrapped):
+            return String(describing: wrapped)
+        }
+    }
+}

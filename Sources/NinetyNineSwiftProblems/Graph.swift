@@ -15,12 +15,11 @@ enum GraphDirection {
     case Directed
 }
 
-
 extension Graph {
     convenience init(nodes: List<T>, edges: List<(T, T)>?) {
         self.init()
         self.nodes = nodes
-//        self.edges = edges.map { edge in (edge.0, edge.1, 0) }
+        //        self.edges = edges.map { edge in (edge.0, edge.1, 0) }
     }
 }
 
