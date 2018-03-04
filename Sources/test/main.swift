@@ -51,7 +51,7 @@ struct TestRunner {
     private func loadSolutions(username: String) -> [String] {
         let destination = "Solutions/\(username)/"
         let files = (try? FileManager.default.contentsOfDirectory(atPath: destination)) ?? []
-        return files.filter { $0.hasSuffix(".swift") }.flatMap { $0.components(separatedBy: "_").first }.filter { $0.isEmpty == false }
+        return files.filter { $0.hasSuffix(".swift") }.flatMap { $0.components(separatedBy: "_").first }.filter { $0.isEmpty == false }.sorted()
     }
 
     private func writeMain(username: String, solutions: [String]) throws {
