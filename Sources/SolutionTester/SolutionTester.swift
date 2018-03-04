@@ -9,33 +9,45 @@ extension TimeInterval {
     }
 }
 
+var passes = 0
+var failures = 0
+var totalDuration: TimeInterval = 0
+
 public struct SolutionTester {
 
     public init() {}
 
-    public func runTests(username: String) {
-        let path = "Solutions/\(username)"
-        let files = (try? FileManager.default.contentsOfDirectory(atPath: path)) ?? []
-        for file in files {
-            if file.hasPrefix("p") {
-                dump(file)
-            }
-        }
-    }
-
-    public func test<T: Equatable>(_ expression: @autoclosure () -> T, equals isEqualTo: @autoclosure () -> T, _ desc: String) {
+    public func test<T: Equatable>(_ expression: @autoclosure () -> T, equals isEqualTo: @autoclosure () -> T, _ desc: String, function: StaticString = #function) {
         let (value, duration) = meassure {
             expression()
         }
         let expectation = isEqualTo()
         if value == expectation {
-            Logger.log("[" + "PASS".green + "] Test '\(desc)' passed: \(value) == \(expectation) (\(duration.secs)) " + "✔".green)
+            passes += 1
+            Logger.log("[" + "PASS".green + "] \(function) '\(desc)' passed: \(value) == \(expectation) (\(duration.secs)) " + "✔".green)
         } else {
-            Logger.log("[" + "FAIL".red + "] Test '\(desc)' failed: " + "\(value) != \(expectation)".red + " (\(duration.secs)) " + "ⅹ".red)
+            failures += 1
+            Logger.log("[" + "FAIL".red + "] \(function) '\(desc)' failed: " + "\(value) != \(expectation)".red + " (\(duration.secs)) " + "ⅹ".red)
         }
+        totalDuration += duration
     }
 
-    func meassure<T>(block: () -> T) -> (T, TimeInterval) {
+    public func showResults() {
+        Logger.log("")
+        let totalTests = passes + failures
+        if failures == 0 {
+            Logger.log("  ✔ OK ".green + "> executed \(totalTests) tests, with \(failures) failures in \(totalDuration.secs)")
+        } else {
+            Logger.log("  ⅹ FAIL ".red + "> executed \(totalTests) tests, with \(failures) failures in \(totalDuration.secs)")
+        }
+        Logger.log("")
+    }
+
+    public var exitCode: Int32 {
+        return failures == 0 ? 0 : -1
+    }
+
+    private func meassure<T>(block: () -> T) -> (T, TimeInterval) {
         let start = Date()
         let result = block()
         return (result, Date().timeIntervalSince(start))

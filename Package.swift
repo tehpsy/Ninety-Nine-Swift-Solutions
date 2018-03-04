@@ -18,8 +18,10 @@ let defaultTargets: [Target] = [
 ]
 
 var userTargets: [Target] {
-    var usernames = Set<String>((try? FileManager.default.contentsOfDirectory(atPath: "Solutions")) ?? [])
-    usernames = usernames.filter { $0.trimmingCharacters(in: .whitespacesAndNewlines).isEmpty == false && $0.hasPrefix(".") == false }
+    var usernames = (try? FileManager.default.contentsOfDirectory(atPath: "Solutions")) ?? []
+    usernames = usernames.filter { $0.trimmingCharacters(in: .whitespacesAndNewlines).isEmpty == false }
+        .filter { $0.hasPrefix(".") == false }
+        .filter { $0 != "_tests" }
     return usernames.map { Target.target(name: $0, dependencies: targetDependencies, path: "Solutions/\($0)") }
 }
 
