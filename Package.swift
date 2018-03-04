@@ -12,19 +12,15 @@ let targetDependencies: [Target.Dependency] = ["Command", "NinetyNineSwiftProble
 let defaultTargets: [Target] = [
     .target(name: "Command", dependencies: ["Utility"]),
     .target(name: "NinetyNineSwiftProblems", dependencies: []),
-    .target(name: "SolutionTester", dependencies: ["NinetyNineSwiftProblems", "Rainbow"]),
+    .target(name: "SolutionTester", dependencies: ["Command", "NinetyNineSwiftProblems", "Rainbow", "Utility"]),
     .target(name: "runner", dependencies: targetDependencies),
+    .target(name: "test", dependencies: targetDependencies),
 ]
 
 var userTargets: [Target] {
-    let filename = URL(fileURLWithPath: "usernames")
-    let usernames = (try? String(contentsOf: filename).components(separatedBy: .newlines)) ?? []
-    let users = usernames.filter { $0.trimmingCharacters(in: .whitespacesAndNewlines).isEmpty == false }
-
-    let targets = users.map {
-        Target.target(name: $0, dependencies: targetDependencies, path: "Solutions/\($0)")
-    }
-    return targets
+    var usernames = Set<String>((try? FileManager.default.contentsOfDirectory(atPath: "Solutions")) ?? [])
+    usernames = usernames.filter { $0.trimmingCharacters(in: .whitespacesAndNewlines).isEmpty == false && $0.hasPrefix(".") == false }
+    return usernames.map { Target.target(name: $0, dependencies: targetDependencies, path: "Solutions/\($0)") }
 }
 
 let targets = defaultTargets + userTargets

@@ -4,4 +4,4 @@
 /*.xcodeproj
 Package.resolved
 .username
-/Solutions/*/*tests.swift
+/Solutions/*/includes

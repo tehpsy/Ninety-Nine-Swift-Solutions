@@ -29,7 +29,7 @@ struct StartCommand: Command {
             return
         }
         let filename = String(format: "p%02d_%@.swift", number, username.value)
-        print("Creating template for problem #\(number) at \(filename)")
+        Logger.log("Creating template for problem #\(number) at \(filename)")
     }
 
 }

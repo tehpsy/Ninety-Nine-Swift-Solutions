@@ -24,10 +24,10 @@ struct UsernameCommand: Command {
     func run(with arguments: ArgumentParser.Result) throws {
         if let username = arguments.get(username) {
             try Username.set(username: username)
-            print("Username has been set to '\(username)'")//, to: &stdoutStream)
+            Logger.log("Username has been set to '\(username)'")
         }
         else if let username = Username() {
-            print("Username: \(username.value)")
+            Logger.log("Username: \(username.value)")
         }
         else {
             Username.printError()

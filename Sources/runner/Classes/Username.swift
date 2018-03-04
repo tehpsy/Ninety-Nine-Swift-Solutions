@@ -6,6 +6,7 @@
 //
 
 import Foundation
+import Command
 
 struct Username {
     static private let filename = ".username"
@@ -28,6 +29,6 @@ struct Username {
     }
 
     static func printError() {
-        print("Username not set. Please run 'runner username <your GitHub username>'.")
+        Logger.error("Username not set. Please run 'runner username <your GitHub username>'.".red)
     }
 }

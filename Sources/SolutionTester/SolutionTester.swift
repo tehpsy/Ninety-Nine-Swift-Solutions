@@ -1,6 +1,7 @@
 import Foundation
 import NinetyNineSwiftProblems
-import Rainbow
+import Command
+import Basic
 
 extension TimeInterval {
     var secs: String {
@@ -17,7 +18,7 @@ public struct SolutionTester {
         let files = (try? FileManager.default.contentsOfDirectory(atPath: path)) ?? []
         for file in files {
             if file.hasPrefix("p") {
-                print(file)
+                dump(file)
             }
         }
     }
@@ -28,9 +29,9 @@ public struct SolutionTester {
         }
         let expectation = isEqualTo()
         if value == expectation {
-            print("[" + "PASS".green + "] Test '\(desc)' passed: \(value) == \(expectation) (\(duration.secs)) " + "✔".green)
+            Logger.log("[" + "PASS".green + "] Test '\(desc)' passed: \(value) == \(expectation) (\(duration.secs)) " + "✔".green)
         } else {
-            print("[" + "FAIL".red + "] Test '\(desc)' failed: " + "\(value) != \(expectation)".red + " (\(duration.secs)) " + "ⅹ".red)
+            Logger.log("[" + "FAIL".red + "] Test '\(desc)' failed: " + "\(value) != \(expectation)".red + " (\(duration.secs)) " + "ⅹ".red)
         }
     }
 
