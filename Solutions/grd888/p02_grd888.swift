@@ -7,15 +7,13 @@ extension List {
     /// - author: Greg Delgado (grd888@gmail.com)
     /// - complexity: O(n)
     var penultimate: T? {
-        guard var next = self.nextItem else {
+        guard let next = self.nextItem else {
             return nil
         }
-        var penultimate: T?
-        while next.nextItem != nil {
-            penultimate = next.value
-            next = next.nextItem!
+        if next.nextItem == nil {
+            return value
         }
-        return penultimate
+        return next.penultimate
     }
 
 }
