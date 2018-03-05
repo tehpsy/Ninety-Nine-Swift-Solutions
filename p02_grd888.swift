@@ -6,8 +6,11 @@ extension List {
     /// - complexity: O(n)
 
     var penultimate: T? {
-        guard let next = self.nextItem, next.nextItem != nil else {
-            return self.value
+        guard let next = self.nextItem else {
+            return nil
+        }
+        if next.nextItem == nil {
+            return value
         }
         return next.penultimate
     }
