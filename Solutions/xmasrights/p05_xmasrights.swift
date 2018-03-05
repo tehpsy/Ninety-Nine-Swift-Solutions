@@ -1,10 +1,12 @@
+import NinetyNineSwiftProblems
+
 extension List {
 
     /// P05 (*) Reverse a linked list
     /// - returns: List a reversed copy of the initial liked list
     /// - author: Christopher Fonseka (christopher.fonseka@googlemail.com)
     /// - complexity: O(n)
-    public func reversed() -> List {
+    public func reverse() -> List {
         let head = self
         let tail = self.nextItem
         head.nextItem = nil
