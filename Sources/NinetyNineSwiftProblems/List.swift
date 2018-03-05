@@ -33,12 +33,13 @@ extension List: CustomStringConvertible {
     }
 }
 
-extension List: Sequence {
-    public func makeIterator() -> AnyIterator<T> {
-        var current: List<T>? = self
-        return AnyIterator {
-            defer { current = current?.nextItem }
-            return current?.value
-        }
-    }
-}
+//extension List: Sequence {
+//    public func makeIterator() -> AnyIterator<T> {
+//        var current: List<T>? = self
+//        return AnyIterator {
+//            defer { current = current?.nextItem }
+//            return current?.value
+//        }
+//    }
+//}
+

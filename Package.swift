@@ -2,6 +2,13 @@
 import PackageDescription
 import Foundation
 
+let products: [Product] = [
+    .executable(name: "test", targets: ["test"]),
+    .library(name: "Command", targets: ["Command"]),
+    .library(name: "NinetyNineSwiftProblems", targets: ["NinetyNineSwiftProblems"]),
+    .library(name: "SolutionTester", targets: ["SolutionTester"])
+]
+
 let packageDependencies: [PackageDescription.Package.Dependency] = [
     .package(url: "https://github.com/apple/swift-package-manager.git", from: "0.1.0"),
     .package(url: "https://github.com/onevcat/Rainbow", from: "3.0.0")
@@ -25,6 +32,7 @@ var userTargets: [Target] {
     return usernames.map { Target.target(name: $0, dependencies: targetDependencies, path: "Solutions/\($0)") }
 }
 
-let targets = defaultTargets + userTargets
-
-let package = Package(name: "NinetyNineSwiftSolutions", dependencies: packageDependencies, targets: targets)
+let package = Package(name: "NinetyNineSwiftSolutions",
+                      products: products,
+                      dependencies: packageDependencies,
+                      targets: defaultTargets + userTargets)

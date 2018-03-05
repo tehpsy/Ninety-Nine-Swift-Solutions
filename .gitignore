@@ -1,7 +1,10 @@
 .DS_Store
 /.build
 /Packages
-/*.xcodeproj
+*.xcodeproj
+*.playground
 Package.resolved
+
+# 99 Solutions
 .username
 /Solutions/*/includes
