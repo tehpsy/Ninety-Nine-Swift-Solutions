@@ -5,11 +5,16 @@ extension List {
     /// - author: Greg Delgado (grd888@gmail.com)
     /// - complexity: O(n)
 
-    var penultimate: T? {
-        guard let next = self.nextItem, next.nextItem != nil else {
-            return self.value
+    var penultimate: T? {  
+        guard var next = self.nextItem else {
+            return nil
         }
-        return next.penultimate
+        var penultimate: T?
+        while next.nextItem != nil {
+            penultimate = next.value
+            next = next.nextItem!
+        }
+        return penultimate
     }
 
 }
