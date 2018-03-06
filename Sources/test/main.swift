@@ -1,6 +1,7 @@
 import Foundation
 import Basic
 import Command
+import SolutionTester
 
 struct TestRunner {
 
@@ -30,43 +31,20 @@ struct TestRunner {
     }
 
     private func runTests(username: String) throws {
-        let solutions = loadSolutions(username: username)
+        let solutions = Solutions.loadSolutions(username: username)
         guard solutions.isEmpty == false else {
-            Logger.log("Bummer, could not find any solutions for user '\(username)' at Solutions/\(username)")
+            Logger.log("Bummer, could not find any solutions for user '\(username)' at Solutions/\(username)".red)
+            Logger.log()
+            printSetupInstructions()
+            printStartSolvingInstructions()
+            printCourage()
             return
         }
         Logger.log("Running tests for: ".blue + username)
-        try createFolder(username: username)
-        try writeMain(username: username, solutions: solutions)
+        try Solutions.createFolder(username: username)
+        try Solutions.writeMain(username: username, solutions: solutions)
         try copyTestFiles(username: username, solutions: solutions)
         try executeTests(username: username)
-    }
-
-    private func createFolder(username: String) throws {
-        let destination = "Solutions/\(username)/includes/"
-        try? FileManager.default.removeItem(atPath: destination) // Fail if does not exist
-        try FileManager.default.createDirectory(atPath: destination, withIntermediateDirectories: true, attributes: nil)
-    }
-
-    private func loadSolutions(username: String) -> [String] {
-        let destination = "Solutions/\(username)/"
-        let files = (try? FileManager.default.contentsOfDirectory(atPath: destination)) ?? []
-        return files.filter { $0.hasSuffix(".swift") }.flatMap { $0.components(separatedBy: "_").first }.filter { $0.isEmpty == false }.sorted()
-    }
-
-    private func writeMain(username: String, solutions: [String]) throws {
-        let destination = "Solutions/\(username)/includes/main.swift"
-        let tests = solutions.map { "tester.test\($0.uppercased())()" }.joined(separator: "\n")
-        let main = """
-        import Foundation
-        import SolutionTester
-        let tester = SolutionTester()
-        \(tests)
-        tester.showResults()
-        exit(tester.exitCode)
-        """
-        let output = URL(fileURLWithPath: destination)
-        try main.write(to: output, atomically: true, encoding: .utf8)
     }
 
     private func copyTestFiles(username: String, solutions: [String]) throws {

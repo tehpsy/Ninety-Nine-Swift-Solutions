@@ -4,6 +4,7 @@ import Foundation
 
 let products: [Product] = [
     .executable(name: "test", targets: ["test"]),
+    .executable(name: "setup", targets: ["setup"]),
     .library(name: "Command", targets: ["Command"]),
     .library(name: "NinetyNineSwiftProblems", targets: ["NinetyNineSwiftProblems"]),
     .library(name: "SolutionTester", targets: ["SolutionTester"])
@@ -21,6 +22,7 @@ let defaultTargets: [Target] = [
     .target(name: "NinetyNineSwiftProblems", dependencies: []),
     .target(name: "SolutionTester", dependencies: ["Command", "NinetyNineSwiftProblems", "Rainbow", "Utility"]),
     .target(name: "runner", dependencies: targetDependencies),
+    .target(name: "setup", dependencies: ["Command", "NinetyNineSwiftProblems", "SolutionTester", "Rainbow", "Utility"]),
     .target(name: "test", dependencies: targetDependencies),
 ]
 

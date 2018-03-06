@@ -11,12 +11,12 @@ import Rainbow
 
 public struct Logger {
 
-    public static func log(_ message: String) {
+    public static func log(_ message: String = "") {
         print(message, to: &stdoutStream)
         stdoutStream.flush()
     }
 
-    public static func error(_ message: String) {
+    public static func error(_ message: String = "") {
         print(message, to: &stderrStream)
         stderrStream.flush()
     }

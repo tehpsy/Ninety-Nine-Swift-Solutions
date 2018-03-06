@@ -1,19 +1,12 @@
-//
-//  Username.swift
-//  runner
-//
-//  Created by Eneko Alonso on 3/3/18.
-//
-
 import Foundation
 import Command
 
-struct Username {
+public struct Username {
     static private let filename = ".username"
 
-    let value: String
+    public let value: String
 
-    init?() {
+    public init?() {
         guard FileManager.default.fileExists(atPath: Username.filename) else {
             return nil
         }
@@ -24,11 +17,8 @@ struct Username {
         self.value = value.trimmingCharacters(in: .whitespacesAndNewlines)
     }
 
-    static func set(username: String) throws {
+    public static func set(username: String) throws {
         try username.write(toFile: filename, atomically: true, encoding: .utf8)
     }
 
-    static func printError() {
-        Logger.error("Username not set. Please run 'runner username <your GitHub username>'.".red)
-    }
 }
