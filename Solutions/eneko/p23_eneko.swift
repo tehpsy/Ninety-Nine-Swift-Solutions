@@ -11,7 +11,7 @@ extension List {
         var list: List? = self
         while count < amount {
             let length = list?.length ?? 0
-            let index = Int(arc4random_uniform(UInt32(length)))
+            let index = randomInt(under: length)
             let result = list?.remove(at: index)
             list = result?.0
             guard let value = result?.1 else {
