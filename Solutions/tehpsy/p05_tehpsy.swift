@@ -9,7 +9,6 @@ extension List {
         var oldList: List<T>? = self
         var newList: List<T>? = self.reversed()
 
-        //Update self to match the reversed list
         oldList = self
         repeat {
             oldList!.value    = newList!.value
@@ -29,7 +28,6 @@ extension List {
         var newList: List<T>? = nil
         var previousNewListItem: List<T>? = nil
 
-        //Create the reversed list
         repeat {
             let newListItem: List<T> = List(oldList!.value)!
             newListItem.nextItem = previousNewListItem
