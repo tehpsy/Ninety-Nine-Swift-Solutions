@@ -1,3 +1,5 @@
+import NinetyNineSwiftProblems
+
 extension List {
 
     /// P05 (*) Reverses a linked list in-place.

@@ -1,3 +1,5 @@
+import NinetyNineSwiftProblems
+
 extension List {
 
     /// P02 (*) Find the penultimate element of a linked list.

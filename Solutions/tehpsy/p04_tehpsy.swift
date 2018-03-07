@@ -1,3 +1,5 @@
+import NinetyNineSwiftProblems
+
 extension List {
 
     /// P04 (*) Find the length of a linked list.
