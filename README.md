@@ -4,6 +4,8 @@ If you like programming challenges, we got 99 good ones for you. Maybe you are j
 
 Ready for the challenge? Let's get started!
 
+![](https://raw.githubusercontent.com/eneko/Ninety-Nine-Swift-Solutions/master/.github/Screenshot%202018-03-06%2021.43.03.png)
+
 ## Ninety-Nine Swift Problems
 
 The full list of Ninety-Nine Swift Problems can be found at http://enekoalonso.com/projects/99-swift-problems
