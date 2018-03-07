@@ -32,7 +32,16 @@ Run the following command to set up your GitHub username:
 $ swift run setup <your_username>
 ```
 
-Note: You are free to use any username you want. However, pull requests will only be accepted when the username matches the GitHub account where the pull request is being submitted from.
+_Note: You are free to use any username you want. However, pull requests will only be accepted when the username matches the GitHub account where the pull request is being submitted from._
+
+To set up the Xcode project, run:
+
+```
+$ swift package generate-xcodeproj
+$ open NinetyNineSwiftSolutions.xcodeproj
+```
+
+In Xcode, select the scheme corresponding to your user name and you should be good to go!
 
 ## Step 4: Solving a problem
 
