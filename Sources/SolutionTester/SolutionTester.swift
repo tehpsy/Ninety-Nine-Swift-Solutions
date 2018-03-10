@@ -18,7 +18,7 @@ public class SolutionTester {
         let expectation = isEqualTo()
         if value == expectation {
             passes += 1
-//            Logger.log("[" + "PASS".green + "] \(function) '\(desc)' passed: \(value.unwrapped) == \(expectation.unwrapped) (\(duration.secs)) " + "✔".green)
+            //            Logger.log("[" + "PASS".green + "] \(function) '\(desc)' passed: \(value.unwrapped) == \(expectation.unwrapped) (\(duration.secs)) " + "✔".green)
             Logger.log("[" + "PASS".green + "] \(function) '\(desc)' passed (\(duration.secs)) " + "✔".green)
         } else {
             failures += 1
@@ -76,7 +76,7 @@ public class SolutionTester {
         if value == expectation {
             passes += 1
             //            Logger.log("[" + "PASS".green + "] \(function) '\(desc)' passed: \(value.unwrapped) == \(expectation.unwrapped) (\(duration.secs)) " + "✔".green)
-//            Logger.log("[" + "PASS".green + "] \(function) '\(desc)' passed (\(duration.secs)) " + "✔".green)
+            //            Logger.log("[" + "PASS".green + "] \(function) '\(desc)' passed (\(duration.secs)) " + "✔".green)
         } else {
             failures += 1
             Logger.log("[" + "FAIL".red + "] assertion failed: " + "\(value.unwrapped) != \(expectation.unwrapped)".red + " (\(duration.secs)) " + "ⅹ".red)

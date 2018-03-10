@@ -26,4 +26,3 @@ extension List where T: Equatable {
         return resultList
     }
 }
-

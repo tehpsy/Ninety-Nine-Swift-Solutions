@@ -8,4 +8,3 @@ extension List {
         return numberList.randomSelect(amount: numbers)
     }
 }
-

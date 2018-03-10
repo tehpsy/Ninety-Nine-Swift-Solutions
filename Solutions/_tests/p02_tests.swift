@@ -9,5 +9,5 @@ extension SolutionTester {
         test(List(1, 1).penultimate, equals: 1, "two element list")
         test(List(1).penultimate, equals: nil, "one element list")
     }
-    
+
 }

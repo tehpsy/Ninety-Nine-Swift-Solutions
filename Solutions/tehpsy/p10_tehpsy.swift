@@ -46,4 +46,3 @@ extension List where T: Equatable {
         return resultHead!
     }
 }
-
