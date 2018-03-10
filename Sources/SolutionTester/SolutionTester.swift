@@ -18,7 +18,6 @@ public class SolutionTester {
         let expectation = isEqualTo()
         if value == expectation {
             passes += 1
-            //            Logger.log("[" + "PASS".green + "] \(function) '\(desc)' passed: \(value.unwrapped) == \(expectation.unwrapped) (\(duration.secs)) " + "✔".green)
             Logger.log("[" + "PASS".green + "] \(function) '\(desc)' passed (\(duration.secs)) " + "✔".green)
         } else {
             failures += 1
@@ -68,15 +67,13 @@ public class SolutionTester {
         }
     }
 
-    public func assert<T: Equatable>(_ expression: @autoclosure () -> T?, equals isEqualTo: @autoclosure () -> T?) {
+    public func assertEquals<T: Equatable>(_ expression: @autoclosure () -> T?, _ isEqualTo: @autoclosure () -> T?) {
         let (value, duration) = meassure {
             expression()
         }
         let expectation = isEqualTo()
         if value == expectation {
             passes += 1
-            //            Logger.log("[" + "PASS".green + "] \(function) '\(desc)' passed: \(value.unwrapped) == \(expectation.unwrapped) (\(duration.secs)) " + "✔".green)
-            //            Logger.log("[" + "PASS".green + "] \(function) '\(desc)' passed (\(duration.secs)) " + "✔".green)
         } else {
             failures += 1
             Logger.log("[" + "FAIL".red + "] assertion failed: " + "\(value.unwrapped) != \(expectation.unwrapped)".red + " (\(duration.secs)) " + "ⅹ".red)
@@ -86,19 +83,3 @@ public class SolutionTester {
 
 }
 
-extension TimeInterval {
-    var secs: String {
-        return String(format: "%0.3f seconds", self)
-    }
-}
-
-extension Optional {
-    var unwrapped: String {
-        switch self {
-        case .none:
-            return "nil"
-        case let .some(wrapped):
-            return String(describing: wrapped)
-        }
-    }
-}

@@ -16,7 +16,7 @@ extension SolutionTester {
     func testP31() {
         Test("Test primes under 200") {
             for number in (2...200) {
-                assert(number.isPrime(), equals: primesUnder200.contains(number))
+                assertEquals(number.isPrime(), primesUnder200.contains(number))
             }
         }
     }
