@@ -1,18 +1,18 @@
 import Foundation
 
 class Graph<T, U> {
-    var direction: GraphDirection { return .Indirected }
+    var direction: GraphDirection { return .indirected }
     var nodes: List<T>?
     var edges: List<(T, T, U)>?
 }
 
 class Digraph<T, U> : Graph<T, U> {
-    override var direction: GraphDirection { return .Directed }
+    override var direction: GraphDirection { return .directed }
 }
 
 enum GraphDirection {
-    case Indirected
-    case Directed
+    case indirected
+    case directed
 }
 
 extension Graph {
