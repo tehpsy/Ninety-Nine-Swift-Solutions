@@ -5,8 +5,12 @@ extension SolutionTester {
 
     // P04 (*) Find the number of elements of a list.
     func testP04() {
-        test(List(1, 1, 2, 3, 5, 8).length, equals: 6, "Long")
-        test(List(1).length, equals: 1, "Single element")
+        Test("Find number of elements") {
+            assertEquals(TestData.singleElementList.length, 1)
+            assertEquals(TestData.twoElementList.length, 2)
+            assertEquals(TestData.multiElementList.length, 7)
+            assertEquals(TestData.veryLongList.length, 1000)
+        }
     }
 
 }

@@ -1,4 +1,4 @@
-func die<T>(_ message: @autoclosure () -> String, file: StaticString = #file, line: UInt = #line) -> T {
+public func die<T>(_ message: @autoclosure () -> String, file: StaticString = #file, line: UInt = #line) -> T {
     preconditionFailure("💥 " + message(), file: file, line: line)
 }
 
@@ -6,17 +6,14 @@ public class List<T> {
     public var value: T
     public var nextItem: List<T>?
 
-    public init(_ values: T...) {
-        value = values.first ?? die("Missing initial value")
-        nextItem = List(Array(values.suffix(from: 1)))
+    public convenience init(_ values: T...) {
+        self.init(values)
     }
 
-    public convenience init?(_ values: [T]) {
-        guard let first = values.first else {
-            return nil
-        }
-        self.init(first)
-        nextItem = List(Array(values.suffix(from: 1)))
+    public init(_ values: [T]) {
+        value = values.first ?? die("Missing initial value")
+        let remaining = Array(values.dropFirst())
+        nextItem = remaining.isEmpty ? nil : List(remaining)
     }
 }
 

@@ -5,10 +5,31 @@ extension SolutionTester {
 
     // P03 (*) Find the Kth element of a list.
     func testP03() {
-        test(List(1, 1, 2, 3, 5, 8)[2], equals: 2, "Long middle")
-        test(List(1, 1, 2, 3, 5, 8)[0], equals: 1, "Long first")
-        test(List(1, 1, 2, 3, 5, 8)[10], equals: nil, "Out of bounds")
-        test(List(1)[1], equals: nil, "Single element out of bounds")
+        Test("Find Kth element") {
+            // Index 0
+            assertEquals(TestData.singleElementList[0], 1)
+            assertEquals(TestData.twoElementList[0], 1)
+            assertEquals(TestData.multiElementList[0], 1)
+            assertEquals(TestData.veryLongList[0], 1)
+
+            // Index 2
+            assertEquals(TestData.singleElementList[2], nil)
+            assertEquals(TestData.twoElementList[2], nil)
+            assertEquals(TestData.multiElementList[2], 3)
+            assertEquals(TestData.veryLongList[2], 3)
+
+            // Index 999
+            assertEquals(TestData.singleElementList[999], nil)
+            assertEquals(TestData.twoElementList[999], nil)
+            assertEquals(TestData.multiElementList[999], nil)
+            assertEquals(TestData.veryLongList[999], 1000)
+
+            // Index 1000
+            assertEquals(TestData.singleElementList[1000], nil)
+            assertEquals(TestData.twoElementList[1000], nil)
+            assertEquals(TestData.multiElementList[1000], nil)
+            assertEquals(TestData.veryLongList[1000], nil)
+        }
     }
 
 }
