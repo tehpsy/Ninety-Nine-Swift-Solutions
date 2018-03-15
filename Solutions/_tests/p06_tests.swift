@@ -20,8 +20,9 @@ extension SolutionTester {
 
     private func randomPalindrome() -> List<Int> {
         let number = randomInt(under: 1000)
-        let elements = Array(0...number)
-        return List(elements + elements.reversed())
+        let elements: [Int] = Array(0...number)
+        let reversed: [Int] = elements.reversed()
+        return List(elements + reversed)
     }
 
 }
