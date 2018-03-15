@@ -18,23 +18,27 @@ extension List where T: Equatable {
 
         var current: List<T>? = self
         repeat {
+            let newItem = List(current!.value)
+
             if sublistHead == nil {
-                sublistHead = List(current!.value)
-                sublistTail = sublistHead
+                sublistHead = newItem
             } else {
-                sublistTail?.nextItem = List(current!.value)
-                sublistTail = sublistTail?.nextItem
+                sublistTail?.nextItem = newItem
             }
+
+            sublistTail = newItem
 
             if (current!.nextItem == nil) || (current!.nextItem?.value != sublistTail?.value) {
 
+                let newItem = List<Data>(Data(sublistHead!.length, sublistTail!.value))
+
                 if resultHead == nil {
-                    resultHead = List<Data>(Data(sublistHead!.length, sublistTail!.value))
-                    resultTail = resultHead
+                    resultHead = newItem
                 } else {
-                    resultTail?.nextItem = List<Data>(Data(sublistHead!.length, sublistTail!.value))
-                    resultTail = resultTail?.nextItem
+                    resultTail?.nextItem = newItem
                 }
+
+                resultTail = newItem
 
                 sublistHead = nil
                 sublistTail = nil
