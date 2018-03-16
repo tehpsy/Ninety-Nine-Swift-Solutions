@@ -6,11 +6,9 @@ extension List {
         get {
             if self.nextItem == nil {
                 return nil
-            }
-            else if self.nextItem?.nextItem == nil {
+            } else if self.nextItem?.nextItem == nil {
                 return self.value
-            }
-            else {
+            } else {
                 return self.nextItem?.penultimate
             }
         }

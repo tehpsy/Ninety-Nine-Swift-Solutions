@@ -5,8 +5,7 @@ extension List {
         get {
             if let next = self.nextItem {
                 return 1 + next.length
-            }
-            else {
+            } else {
                 return 1
             }
         }

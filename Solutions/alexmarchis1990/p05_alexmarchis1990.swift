@@ -4,7 +4,7 @@ extension List {
     
     func reverse() -> List<T> {
         
-        var arr:[T] = []
+        var arr: [T] = []
         arr.append(self.value)
         var currentNode = self.nextItem
         
@@ -13,6 +13,6 @@ extension List {
             currentNode = cn.nextItem
         }
         
-        return List<T>.init(arr)!
+        return List<T>.init(arr)
     }
 }

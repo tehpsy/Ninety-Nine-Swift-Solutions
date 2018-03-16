@@ -6,8 +6,7 @@ extension List {
         get {
             if index == 0 {
                 return self.value
-            }
-            else {
+            } else {
                 return self.nextItem?[index-1]
             }
         }
