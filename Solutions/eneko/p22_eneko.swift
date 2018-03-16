@@ -18,4 +18,3 @@ extension List {
         return resultList
     }
 }
-

@@ -22,4 +22,3 @@ extension List {
         return resultList
     }
 }
-

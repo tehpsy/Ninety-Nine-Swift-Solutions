@@ -6,4 +6,3 @@ extension List {
         return randomSelect(amount: length)
     }
 }
-

@@ -2,7 +2,7 @@ import NinetyNineSwiftProblems
 import SolutionTester
 
 extension SolutionTester {
-    
+
     // P19 (**) Rotate a list N places to the left.
     func testP19() {
         test(
@@ -29,7 +29,7 @@ extension SolutionTester {
             List("a").rotate(amount: 3).description,
             equals: List("a").description,
             "Rotate 3")
-        
+
         test(
             List("a", "b", "c", "d", "e", "f", "g", "h", "i", "j", "k").rotate(amount: -2).description,
             equals: List("j", "k", "a", "b", "c", "d", "e", "f", "g", "h", "i").description,
@@ -50,5 +50,5 @@ extension SolutionTester {
             equals: List("a").description,
             "Rotate -2")
     }
-    
+
 }

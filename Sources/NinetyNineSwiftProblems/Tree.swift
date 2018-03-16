@@ -22,17 +22,17 @@ public class Tree<T>: CustomStringConvertible {
 }
 
 public class PositionedTree<T> : Tree<T> {
-    var x: Int
-    var y: Int
+    var column: Int
+    var row: Int
 
-    public init(_ value: T, _ left: Tree<T>? = nil, _ right: Tree<T>? = nil, x: Int, y: Int) {
-        self.x = x
-        self.y = y
+    public init(_ value: T, _ left: Tree<T>? = nil, _ right: Tree<T>? = nil, column: Int, row: Int) {
+        self.column = column
+        self.row = row
         super.init(value, left, right)
     }
 
     override public var description: String {
-        let position = "T[\(x),\(y)]"
+        let position = "T[\(column),\(row)]"
         let tree = super.description
         return position + tree[tree.index(after: tree.startIndex)...]
     }

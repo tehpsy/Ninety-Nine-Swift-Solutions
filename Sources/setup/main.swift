@@ -43,7 +43,6 @@ func setupUser(username: String) {
     }
 }
 
-
 if let username = Username() {
     printWelcome()
     printUserInfo(username: username.value)

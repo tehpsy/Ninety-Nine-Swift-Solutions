@@ -10,4 +10,3 @@ extension List {
         return (nextItem?.length ?? 0) + 1
     }
 }
-

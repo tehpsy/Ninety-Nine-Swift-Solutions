@@ -25,4 +25,3 @@ extension List {
         return resultList
     }
 }
-

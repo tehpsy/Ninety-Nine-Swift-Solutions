@@ -36,4 +36,3 @@ extension List {
         return resultList
     }
 }
-

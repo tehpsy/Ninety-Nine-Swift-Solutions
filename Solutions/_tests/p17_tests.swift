@@ -17,8 +17,8 @@ extension SolutionTester {
         )
         test(
             List(1, 1, 2, 3, 5, 8).split(at: 3).0?.description,
-             equals: "[1, 1, 2]",
-             "Numbers left"
+            equals: "[1, 1, 2]",
+            "Numbers left"
         )
         test(
             List(1, 1, 2, 3, 5, 8).split(at: 3).1?.description,

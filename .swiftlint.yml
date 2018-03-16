@@ -2,3 +2,5 @@ included:
 - Sources
 - Solutions
 
+line_length: 160
+

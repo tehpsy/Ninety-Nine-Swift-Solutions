@@ -54,4 +54,3 @@ public func printUsernameError() {
     Logger.error("Username not set.\n".red)
     printSetupInstructions()
 }
-
