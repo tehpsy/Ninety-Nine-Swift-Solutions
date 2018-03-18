@@ -3,16 +3,13 @@ import NinetyNineSwiftProblems
 extension List {
     
     func reverse() -> List<T> {
-        
-        var arr: [T] = []
-        arr.append(self.value)
-        var currentNode = self.nextItem
-        
-        while let cn = currentNode {
-            arr.insert(cn.value, at: 0)
-            currentNode = cn.nextItem
+        var newList = self
+        let currentNode = self
+        while let nextNode = currentNode.nextItem {
+            currentNode.nextItem = nextNode.nextItem
+            nextNode.nextItem = newList
+            newList = nextNode
         }
-        
-        return List<T>.init(arr)
+        return newList
     }
 }
