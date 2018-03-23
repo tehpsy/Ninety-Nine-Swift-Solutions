@@ -9,41 +9,23 @@ extension List where T: Equatable {
     /// - complexity: O(n)
     func encode() -> List<(Int, T)> {
 
+        let packedList = pack()
         typealias Data = (Int, T)
 
         var resultHead: List<Data>?
         var resultTail: List<Data>?
-        var sublistHead: List<T>?
-        var sublistTail: List<T>?
 
-        var current: List<T>? = self
+        var current: List<List<T>>? = packedList
         repeat {
-            let newItem = List(current!.value)
+            let newItem = List<Data>(Data(current!.value.length, current!.value.value))
 
-            if sublistHead == nil {
-                sublistHead = newItem
+            if resultHead == nil {
+                resultHead = newItem
             } else {
-                sublistTail?.nextItem = newItem
+                resultTail?.nextItem = newItem
             }
 
-            sublistTail = newItem
-
-            if (current!.nextItem == nil) || (current!.nextItem?.value != sublistTail?.value) {
-
-                let newItem = List<Data>(Data(sublistHead!.length, sublistTail!.value))
-
-                if resultHead == nil {
-                    resultHead = newItem
-                } else {
-                    resultTail?.nextItem = newItem
-                }
-
-                resultTail = newItem
-
-                sublistHead = nil
-                sublistTail = nil
-            }
-
+            resultTail = newItem
             current = current?.nextItem
         } while current != nil
 
